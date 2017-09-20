@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Table manipulation</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <head>
+  <body ng-app = "tableAngular">
+    <div ng-controller ="tablemanipulaion">
+	 <style>
+        table {
+            border-collapse: collapse;
+            font-family: Arial;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        th {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+	  <div align = "center"> Table manipulation </div>
+      	  
+	  filter : <input type = "text" placeholder = "search by name" ng-model = "search"></input>
+	  <br>
+	  <br>
+	  <table>
+	    <thead>
+		  <th>
+		    <a href="#" ng-click="orderByField='name'">
+		      name
+			</a>
+		  </th>
+		  <th>
+			<a href="#" ng-click="orderByField='department'">
+		      department
+			</a>
+		  </th>
+		  <th>
+		    role
+		  </th>
+		  <th>
+		    type
+		  </th>
+		</thead>
+		<tbody >
+		  <tr ng-repeat ="lists in list | orderBy : orderByField | filter : {name:search} ">
+		    <td>{{lists.name}}</td>
+			<td>{{lists.department}}</td>
+			<td>{{lists.role}}</td>
+			<td>{{lists.type}}</td>
+		  </tr>
+		</tbody>	
+		</table>
+		
+	</div>
+    <script src = "table.controller.js"></script>
+  </body>
+ </html>
+	
+  
